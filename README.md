@@ -20,43 +20,49 @@ pip install esceltosqlserver
 
 👍   [sqlalchemy](https://www.sqlalchemy.org/)
 
-# Reslase History
-
-`0.1`
 
 # QuickStart
 
 ```python
-import exceltosqlserver
-
+import exceltosqlserver as es
 # generate the class instance
 
+# STEP One, prepare your input pareameters
+
 yourFile  = "test01.xls"  # available for xlsx, xls,csv
-yourHostORip  = "localhost"   # you need to change your host if needed, dns: local ip address
 yourUsrID = ""
 yourPWD   = ""
 yourDBname= ""
-save2tableName = False  # defsult False
+save2tableName = False  # save your file name table name onto SQL Server or A string like: "test"
 
-exceltosqlserver(yourFile,yourHoseORip,yourUsrID,yourPWD,yourDBname,save2tableName)
+# get your local host name
+# this will return your local computer name for your sql server database
+host_name = es.hostname   
+
+# get your local ip address 
+# this will return your local ip address (if your sql server can be accessed by DNS)
+ip = es.local_ip  
+
+yourHostORip  = "localhost"   # you need to change your host if needed, dns: local ip address
+
+
+# STEP Two  convert your data to sql server
+es.exceltoDBtable(yourFile,yourHoseORip,yourUsrID,yourPWD,yourDBname,save2tableName)
 
 
 ```
+
 
 ```python
 output:
 Successfully load excel data...
-ODBC+Driver+13+for+SQL+Server
 Secessfully connected to SQL Server...
-Secessfully saved yourtable into SQL Server...
+Secessfully saved 'yourtable' into SQL Server...
 ```
-
-
 
 # API Reference
 
 exceltosqlserver(`filePath,hostORip=False,usrID =False,pwd=False,database=False,save2tableName`)
-
 
 filePath: str
 

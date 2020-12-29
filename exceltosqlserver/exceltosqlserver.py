@@ -45,12 +45,12 @@ class exceltoDBtable:
                          "{ODBC Driver 17 for SQL Server}"]
         for i in [sqlserverDriver[5]]:
             driveString = i.replace(" ","+").replace("{","").replace("}","")
-            print(driveString)
+            # print(driveString)
             
             
             try:
                 self.engine = create_engine("mssql+pyodbc://%s:%s@%s/%s?driver=%s?"%(self.usrID,self.pwd,self.hostORip,self.database,driveString))
-                print("Secessfully connected to SQL Server...")
+                print("Seccessfully connected to SQL Server...")
                 
                 if self.save2tableName:
                     tableName = self.save2tableName
@@ -61,7 +61,7 @@ class exceltoDBtable:
                         tableName = self.filePath.split(".")[0]
                 
                 self.file_data.to_sql(tableName,con=self.engine)
-                print("Secessfully saved yourtable into SQL Server...")
+                print("Successfully saved yourtable into SQL Server...")
                 return None 
             except:
                 self.engine = False
