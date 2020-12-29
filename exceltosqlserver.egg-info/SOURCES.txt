@@ -1,0 +1,7 @@
+README.md
+setup.py
+exceltosqlserver/__init__.py
+exceltosqlserver.egg-info/PKG-INFO
+exceltosqlserver.egg-info/SOURCES.txt
+exceltosqlserver.egg-info/dependency_links.txt
+exceltosqlserver.egg-info/top_level.txt
