@@ -80,13 +80,3 @@ class exceltoDBtable:
             raise Exception("Unable to load input file...")
 
 
-if __name__ == "__main__":
-    
-    ip = "192.168.56.1"
-    usr = "xiangyongluo"
-    pwd = "1234567890"
-    database = "Sati_MoBi"
-    file_ = "./test01.xls"
-    
-    coo = exceltoDBtable(file_,ip,usr,pwd,database)
-    
