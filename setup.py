@@ -12,7 +12,7 @@ except:
 
 setuptools.setup(
     name="exceltosqlserver", # Replace with your own username
-    version="0.1.0",
+    version="0.1.2",
     author="Xiangyong Luo",
     author_email="rochemay@163.com",
     description="This package help to convert your excel files (xlsx,xls,csv) to SQL Server database.",

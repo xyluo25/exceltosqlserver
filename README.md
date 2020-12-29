@@ -6,10 +6,8 @@ This package help to convert your excel files (xlsx,xls,csv) to SQL Server datab
 
 exceltomysql can be installed as:
 
-Windows:
-
 ```python
-pip install esceltosqlserver
+pip install exceltosqlserver
 ```
 
 # Dependency
@@ -19,7 +17,6 @@ pip install esceltosqlserver
 👍   [pyodbc](https://github.com/mkleehammer/pyodbc)
 
 👍   [sqlalchemy](https://www.sqlalchemy.org/)
-
 
 # QuickStart
 
@@ -43,15 +40,17 @@ host_name = es.hostname
 # this will return your local ip address (if your sql server can be accessed by DNS)
 ip = es.local_ip  
 
-yourHostORip  = "localhost"   # you need to change your host if needed, dns: local ip address
+# you need to change your host if needed, dns: local ip address
+#yourHostORip  = "localhost"   
+# yourHostORip  = host_name
+yourHostORip  = ip
 
 
 # STEP Two  convert your data to sql server
-es.exceltoDBtable(yourFile,yourHoseORip,yourUsrID,yourPWD,yourDBname,save2tableName)
+es.exceltoDBtable(yourFile,yourHostORip,yourUsrID,yourPWD,yourDBname,save2tableName)
 
 
 ```
-
 
 ```python
 output:
@@ -62,7 +61,7 @@ Secessfully saved 'yourtable' into SQL Server...
 
 # API Reference
 
-exceltosqlserver(`filePath,hostORip=False,usrID =False,pwd=False,database=False,save2tableName`)
+exceltosqlserver.exceltoDBtable(`filePath,hostORip=False,usrID =False,pwd=False,database=False,save2tableName`)
 
 filePath: str
 

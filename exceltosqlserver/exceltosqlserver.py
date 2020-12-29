@@ -61,7 +61,7 @@ class exceltoDBtable:
                         tableName = self.filePath.split(".")[0]
                 
                 self.file_data.to_sql(tableName,con=self.engine)
-                print("Successfully saved yourtable into SQL Server...")
+                print("Successfully saved %s into SQL Server..."%tableName)
                 return None 
             except:
                 self.engine = False
