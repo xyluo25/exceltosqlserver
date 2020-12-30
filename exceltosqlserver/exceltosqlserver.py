@@ -43,7 +43,7 @@ class exceltoDBtable:
                          "{ODBC Driver 13 for SQL Server}",
                          "{ODBC Driver 13.1 for SQL Server}",
                          "{ODBC Driver 17 for SQL Server}"]
-        for i in [sqlserverDriver[5]]:
+        for i in sqlserverDriver:
             driveString = i.replace(" ","+").replace("{","").replace("}","")
             # print(driveString)
             

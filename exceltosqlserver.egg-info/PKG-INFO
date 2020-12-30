@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: exceltosqlserver
-Version: 0.1.2
+Version: 0.1.3
 Summary: This package help to convert your excel files (xlsx,xls,csv) to SQL Server database.
 Home-page: https://github.com/Xiangyongluo/exceltosqlserver
 Author: Xiangyong Luo
