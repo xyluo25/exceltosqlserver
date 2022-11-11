@@ -19,16 +19,15 @@ local_ip = socket.gethostbyname(hostname)
 class exceltoDBtable:
     #  Available for sql server and mysql now
     def __init__(self,filePath,hostORip=False,usrID =False,pwd=False,database=False,save2tableName=False):
-        if not any([hostORip,database,usrID,pwd]):
+        if not any([hostORip, database, usrID, pwd]):
             raise Exception("Partially inputs, please check your inputs...")
-        else:
-            self.filePath = filePath
-            self.hostORip = hostORip
-            self.database=database
-            self.usrID = usrID
-            self.pwd = pwd
-            self.save2tableName = save2tableName
-            
+        self.filePath = filePath
+        self.hostORip = hostORip
+        self.database=database
+        self.usrID = usrID
+        self.pwd = pwd
+        self.save2tableName = save2tableName
+
         self.dbType = ["sqlserver"]
         self.readData()
         self.connect2DB()
@@ -46,27 +45,29 @@ class exceltoDBtable:
         for i in sqlserverDriver:
             driveString = i.replace(" ","+").replace("{","").replace("}","")
             # print(driveString)
-            
-            
+
+
             try:
-                self.engine = create_engine("mssql+pyodbc://%s:%s@%s/%s?driver=%s?"%(self.usrID,self.pwd,self.hostORip,self.database,driveString))
+                self.engine = create_engine(
+                    f"mssql+pyodbc://{self.usrID}:{self.pwd}@{self.hostORip}/{self.database}?driver={driveString}?"
+                )
+
                 print("Seccessfully connected to SQL Server...")
-                
+
                 if self.save2tableName:
                     tableName = self.save2tableName
+                elif "/" in self.filePath:
+                    tableName = self.filePath.split("/")[-1].split(".")[0]
                 else:
-                    if "/" in self.filePath:
-                        tableName = self.filePath.split("/")[-1].split(".")[0]
-                    else:
-                        tableName = self.filePath.split(".")[0]
-                
+                    tableName = self.filePath.split(".")[0]
+
                 self.file_data.to_sql(tableName,con=self.engine)
-                print("Successfully saved %s into SQL Server..."%tableName)
-                return None 
+                print(f"Successfully saved {tableName} into SQL Server...")
+                return None
             except:
                 self.engine = False
                 continue
-            
+
         raise Exception("Can not save table to sql server, please check your inputs.")
         
     def readData(self) -> "DataFrame":
