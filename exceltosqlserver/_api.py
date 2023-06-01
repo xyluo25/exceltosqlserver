@@ -9,7 +9,3 @@
 from .exceltosqlserver import exceltoDBtable
 from .exceltosqlserver import hostname
 from .exceltosqlserver import local_ip
-
-
-# from .test_data import writeTest,writeTest1
-# from .tesanother import writeMGS

@@ -106,38 +106,11 @@
         "documentation": {}
     },
     {
-        "label": "writeMGS",
-        "kind": 2,
-        "importPath": "exceltosqlserver.tesanother.writeMSG",
-        "description": "exceltosqlserver.tesanother.writeMSG",
-        "peekOfCode": "def writeMGS(msg):\n    print(msg)\n# writeMGS(\"g\")",
-        "detail": "exceltosqlserver.tesanother.writeMSG",
-        "documentation": {}
-    },
-    {
-        "label": "writeTest",
-        "kind": 2,
-        "importPath": "exceltosqlserver.test_data.writeINtes",
-        "description": "exceltosqlserver.test_data.writeINtes",
-        "peekOfCode": "def writeTest(msg):\n    print(msg)\ndef writeTest1(msg):\n    print(msg)",
-        "detail": "exceltosqlserver.test_data.writeINtes",
-        "documentation": {}
-    },
-    {
-        "label": "writeTest1",
-        "kind": 2,
-        "importPath": "exceltosqlserver.test_data.writeINtes",
-        "description": "exceltosqlserver.test_data.writeINtes",
-        "peekOfCode": "def writeTest1(msg):\n    print(msg)",
-        "detail": "exceltosqlserver.test_data.writeINtes",
-        "documentation": {}
-    },
-    {
         "label": "exceltoDBtable",
         "kind": 6,
         "importPath": "exceltosqlserver.exceltosqlserver",
         "description": "exceltosqlserver.exceltosqlserver",
-        "peekOfCode": "class exceltoDBtable:\n    #  Available for sql server and mysql now\n    def __init__(self,filePath,hostORip=False,usrID =False,pwd=False,database=False,save2tableName=False):\n        if not any([hostORip,database,usrID,pwd]):\n            raise Exception(\"Partially inputs, please check your inputs...\")\n        else:\n            self.filePath = filePath\n            self.hostORip = hostORip\n            self.database=database\n            self.usrID = usrID",
+        "peekOfCode": "class exceltoDBtable:\n    #  Available for sql server and mysql now\n    def __init__(self,\n                 filePath: str,\n                 hostORip: str = \"\",\n                 usrID: str = \"\",\n                 pwd: str = \"\",\n                 database: str = \"\",\n                 rename_table: str = \"\"):\n        if not any([hostORip, database, usrID, pwd]):",
         "detail": "exceltosqlserver.exceltosqlserver",
         "documentation": {}
     },
@@ -146,7 +119,7 @@
         "kind": 5,
         "importPath": "exceltosqlserver.exceltosqlserver",
         "description": "exceltosqlserver.exceltosqlserver",
-        "peekOfCode": "hostname = socket.gethostname()\nlocal_ip = socket.gethostbyname(hostname)\n# Pandas to sql need to use sqlalcemy to create engine\nclass exceltoDBtable:\n    #  Available for sql server and mysql now\n    def __init__(self,filePath,hostORip=False,usrID =False,pwd=False,database=False,save2tableName=False):\n        if not any([hostORip,database,usrID,pwd]):\n            raise Exception(\"Partially inputs, please check your inputs...\")\n        else:\n            self.filePath = filePath",
+        "peekOfCode": "hostname = socket.gethostname()\nlocal_ip = socket.gethostbyname(hostname)\nclass exceltoDBtable:\n    #  Available for sql server and mysql now\n    def __init__(self,\n                 filePath: str,\n                 hostORip: str = \"\",\n                 usrID: str = \"\",\n                 pwd: str = \"\",\n                 database: str = \"\",",
         "detail": "exceltosqlserver.exceltosqlserver",
         "documentation": {}
     },
@@ -155,7 +128,7 @@
         "kind": 5,
         "importPath": "exceltosqlserver.exceltosqlserver",
         "description": "exceltosqlserver.exceltosqlserver",
-        "peekOfCode": "local_ip = socket.gethostbyname(hostname)\n# Pandas to sql need to use sqlalcemy to create engine\nclass exceltoDBtable:\n    #  Available for sql server and mysql now\n    def __init__(self,filePath,hostORip=False,usrID =False,pwd=False,database=False,save2tableName=False):\n        if not any([hostORip,database,usrID,pwd]):\n            raise Exception(\"Partially inputs, please check your inputs...\")\n        else:\n            self.filePath = filePath\n            self.hostORip = hostORip",
+        "peekOfCode": "local_ip = socket.gethostbyname(hostname)\nclass exceltoDBtable:\n    #  Available for sql server and mysql now\n    def __init__(self,\n                 filePath: str,\n                 hostORip: str = \"\",\n                 usrID: str = \"\",\n                 pwd: str = \"\",\n                 database: str = \"\",\n                 rename_table: str = \"\"):",
         "detail": "exceltosqlserver.exceltosqlserver",
         "documentation": {}
     }

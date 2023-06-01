@@ -30,24 +30,24 @@ yourFile  = "test01.xls"  # available for xlsx, xls,csv
 yourUsrID = ""
 yourPWD   = ""
 yourDBname= ""
-save2tableName = False  # save your file name table name onto SQL Server or A string like: "test"
+rename_table = ""  # Use your filename as tablename onto SQL Server or user define the table name, e.g. :"test"
 
 # get your local host name
 # this will return your local computer name for your sql server database
-host_name = es.hostname   
+host_name = es.hostname
 
-# get your local ip address 
+# get your local ip address
 # this will return your local ip address (if your sql server can be accessed by DNS)
-ip = es.local_ip  
+ip = es.local_ip
 
 # you need to change your host if needed, dns: local ip address
-#yourHostORip  = "localhost"   
+#yourHostORip  = "localhost"
 # yourHostORip  = host_name
 yourHostORip  = ip
 
 
-# STEP Two  convert your data to sql server
-es.exceltoDBtable(yourFile,yourHostORip,yourUsrID,yourPWD,yourDBname,save2tableName)
+# STEP Two add your data to sql server
+es.exceltoDBtable(yourFile, yourHostORip, yourUsrID, yourPWD, yourDBname, rename_table)
 
 
 ```
@@ -55,22 +55,22 @@ es.exceltoDBtable(yourFile,yourHostORip,yourUsrID,yourPWD,yourDBname,save2tableN
 ```python
 output:
 Successfully load excel data...
-Secessfully connected to SQL Server...
-Secessfully saved 'yourtable' into SQL Server...
+Sucessfully connected to SQL Server...
+Sucessfully saved 'yourtable' to SQL Server...
 ```
 
 # API Reference
 
-exceltosqlserver.exceltoDBtable(`filePath,hostORip=False,usrID =False,pwd=False,database=False,save2tableName`)
+exceltosqlserver.exceltoDBtable(`filePath,hostORip=False,usrID =False,pwd=False,database=False,rename_table`)
 
 filePath: str
 
-hostORip: str  default :False
+hostORip: str  default: ""
 
-usrID: str  default: False
+usrID: str  default: ""
 
-pwd: str   default: False
+pwd: str   default: ""
 
-database: str  default:False
+database: str  default: ""
 
-save2tableName: str   default:False, will auto save your file name as table name  into mysql database. If assignmed value, will change table name from your file name to the assigned value.
+rename_table: str   default: "", will auto save your filename as table name  to sql  server database. If assignmed value, will change table name from your filename to the assigned value.
