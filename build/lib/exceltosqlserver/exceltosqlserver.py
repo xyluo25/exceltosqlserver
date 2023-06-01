@@ -14,63 +14,73 @@ import socket
 hostname = socket.gethostname()
 local_ip = socket.gethostbyname(hostname)
 
-# Pandas to sql need to use sqlalcemy to create engine
 
 class exceltoDBtable:
     #  Available for sql server and mysql now
-    def __init__(self,filePath,hostORip=False,usrID =False,pwd=False,database=False,save2tableName=False):
-        if not any([hostORip,database,usrID,pwd]):
+    def __init__(self,
+                 filePath: str,
+                 hostORip: str = "",
+                 usrID: str = "",
+                 pwd: str = "",
+                 database: str = "",
+                 rename_table: str = ""):
+
+        if not any([hostORip, database, usrID, pwd]):
             raise Exception("Partially inputs, please check your inputs...")
-        else:
-            self.filePath = filePath
-            self.hostORip = hostORip
-            self.database=database
-            self.usrID = usrID
-            self.pwd = pwd
-            self.save2tableName = save2tableName
-            
+
+        self.filePath = filePath
+        self.hostORip = hostORip
+        self.database = database
+        self.usrID = usrID
+        self.pwd = pwd
+        self.rename_table = rename_table
+
         self.dbType = ["sqlserver"]
         self.readData()
         self.connect2DB()
-        
-    def connect2DB(self) -> "Connect to Database Server":
+
+    def connect2DB(self) -> None:  # sourcery skip: assign-if-exp, extract-method
         # This will test whether a sql server database or a mysql database
-        sqlserverDriver=["{SQL Server}",
-                         "{SQL Native Client}",
-                         "{SQL Server Native Client 10.0}",
-                         "{SQL Server Native Client 11.0}",
-                         "{ODBC Driver 11 for SQL Server}",
-                         "{ODBC Driver 13 for SQL Server}",
-                         "{ODBC Driver 13.1 for SQL Server}",
-                         "{ODBC Driver 17 for SQL Server}"]
+        sqlserverDriver = ["{SQL Server}",
+                           "{SQL Native Client}",
+                           "{SQL Server Native Client 10.0}",
+                           "{SQL Server Native Client 11.0}",
+                           "{ODBC Driver 11 for SQL Server}",
+                           "{ODBC Driver 13 for SQL Server}",
+                           "{ODBC Driver 13.1 for SQL Server}",
+                           "{ODBC Driver 17 for SQL Server}",
+                           "{ODBC Driver 18 for SQL Server}"]
+
         for i in sqlserverDriver:
-            driveString = i.replace(" ","+").replace("{","").replace("}","")
-            # print(driveString)
-            
-            
+            driveString = i.replace(" ", "+").replace("{", "").replace("}", "")
+
             try:
-                self.engine = create_engine("mssql+pyodbc://%s:%s@%s/%s?driver=%s?"%(self.usrID,self.pwd,self.hostORip,self.database,driveString))
-                print("Seccessfully connected to SQL Server...")
-                
-                if self.save2tableName:
-                    tableName = self.save2tableName
+                # connect to sql server
+                self.engine = create_engine(
+                    f"mssql+pyodbc://{self.usrID}:{self.pwd}@{self.hostORip}/{self.database}?driver={driveString}?")
+
+                print("Successfully connected to SQL Server...")
+
+                if self.rename_table:
+                    table_name = self.rename_table
+                elif "/" in self.filePath:
+                    table_name = self.filePath.split("/")[-1].split(".")[0]
                 else:
-                    if "/" in self.filePath:
-                        tableName = self.filePath.split("/")[-1].split(".")[0]
-                    else:
-                        tableName = self.filePath.split(".")[0]
-                
-                self.file_data.to_sql(tableName,con=self.engine)
-                print("Successfully saved %s into SQL Server..."%tableName)
-                return None 
-            except:
+                    table_name = self.filePath.split(".")[0]
+
+                self.file_data.to_sql(table_name, con=self.engine)
+                print("Successfully saved %s into SQL Server..." % table_name)
+                return None
+
+            except Exception:
                 self.engine = False
                 continue
-            
-        raise Exception("Can not save table to sql server, please check your inputs.")
-        
-    def readData(self) -> "DataFrame":
-        if self.filePath.split(".")[-1] in ["xlsx","xls"]:
+
+        raise Exception(
+            "Can not save table to sql server, please check your inputs.")
+
+    def readData(self) -> None:
+        if self.filePath.split(".")[-1] in ["xlsx", "xls"]:
             self.file_data = pd.read_excel(self.filePath)
             print("Successfully load excel data...")
         elif self.filePath.split(".")[-1] in ["csv"]:
@@ -78,5 +88,3 @@ class exceltoDBtable:
             print("Successfully load csv data...")
         else:
             raise Exception("Unable to load input file...")
-
-

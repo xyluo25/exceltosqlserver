@@ -7,7 +7,7 @@ try:
     # if have requirements.txt file inside the folder
     with open("requirements.txt", "r", encoding="utf-8") as f:
         modules_needed = [i.strip() for i in fh.readlines()]
-except:
+except Exception:
     modules_needed = []
 
 setuptools.setup(
@@ -15,11 +15,10 @@ setuptools.setup(
     version="0.2.1",
     author="Xiangyong Luo",
     author_email="rochemay@163.com",
-    description="This package help to convert your excel files (xlsx,xls,csv) to SQL Server database.",
+    description="This package help convert your excel files (xlsx,xls,csv) to SQL Server Database.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Xiangyongluo/exceltosqlserver",
-
 
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -32,8 +31,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     include_package_data=True,
 
-    package_data= {'':['*.txt','*.xls','*.xlsx','*.csv'],
-                   "test_data":['*.txt']}
+    package_data={'': ['*.txt', '*.xls', '*.xlsx', '*.csv'],
+                  "test_data": ['*.txt']}
 )
-
 
