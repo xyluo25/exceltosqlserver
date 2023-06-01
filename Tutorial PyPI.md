@@ -6,14 +6,13 @@ After that, run
 
 under save folder
 
-
 # step 2 prepare .pypirc file
 
 
 
 # step 3 upload your file onto pypi
 
-you will see dict folder under your homefolder,and then 
+you will see dist folder under your home_folder,and then 
 
 run
 

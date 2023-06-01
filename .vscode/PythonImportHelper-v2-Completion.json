@@ -1,0 +1,162 @@
+[
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "pyodbc",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pyodbc",
+        "description": "pyodbc",
+        "detail": "pyodbc",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "socket",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "socket",
+        "description": "socket",
+        "detail": "socket",
+        "documentation": {}
+    },
+    {
+        "label": "setuptools",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "writeMGS",
+        "kind": 2,
+        "importPath": "build.lib.exceltosqlserver.tesanother.writeMSG",
+        "description": "build.lib.exceltosqlserver.tesanother.writeMSG",
+        "peekOfCode": "def writeMGS(msg):\n    print(msg)\n# writeMGS(\"g\")",
+        "detail": "build.lib.exceltosqlserver.tesanother.writeMSG",
+        "documentation": {}
+    },
+    {
+        "label": "writeTest",
+        "kind": 2,
+        "importPath": "build.lib.exceltosqlserver.test_data.writeINtes",
+        "description": "build.lib.exceltosqlserver.test_data.writeINtes",
+        "peekOfCode": "def writeTest(msg):\n    print(msg)\ndef writeTest1(msg):\n    print(msg)",
+        "detail": "build.lib.exceltosqlserver.test_data.writeINtes",
+        "documentation": {}
+    },
+    {
+        "label": "writeTest1",
+        "kind": 2,
+        "importPath": "build.lib.exceltosqlserver.test_data.writeINtes",
+        "description": "build.lib.exceltosqlserver.test_data.writeINtes",
+        "peekOfCode": "def writeTest1(msg):\n    print(msg)",
+        "detail": "build.lib.exceltosqlserver.test_data.writeINtes",
+        "documentation": {}
+    },
+    {
+        "label": "exceltoDBtable",
+        "kind": 6,
+        "importPath": "build.lib.exceltosqlserver.exceltosqlserver",
+        "description": "build.lib.exceltosqlserver.exceltosqlserver",
+        "peekOfCode": "class exceltoDBtable:\n    #  Available for sql server and mysql now\n    def __init__(self,filePath,hostORip=False,usrID =False,pwd=False,database=False,save2tableName=False):\n        if not any([hostORip,database,usrID,pwd]):\n            raise Exception(\"Partially inputs, please check your inputs...\")\n        else:\n            self.filePath = filePath\n            self.hostORip = hostORip\n            self.database=database\n            self.usrID = usrID",
+        "detail": "build.lib.exceltosqlserver.exceltosqlserver",
+        "documentation": {}
+    },
+    {
+        "label": "hostname",
+        "kind": 5,
+        "importPath": "build.lib.exceltosqlserver.exceltosqlserver",
+        "description": "build.lib.exceltosqlserver.exceltosqlserver",
+        "peekOfCode": "hostname = socket.gethostname()\nlocal_ip = socket.gethostbyname(hostname)\n# Pandas to sql need to use sqlalcemy to create engine\nclass exceltoDBtable:\n    #  Available for sql server and mysql now\n    def __init__(self,filePath,hostORip=False,usrID =False,pwd=False,database=False,save2tableName=False):\n        if not any([hostORip,database,usrID,pwd]):\n            raise Exception(\"Partially inputs, please check your inputs...\")\n        else:\n            self.filePath = filePath",
+        "detail": "build.lib.exceltosqlserver.exceltosqlserver",
+        "documentation": {}
+    },
+    {
+        "label": "local_ip",
+        "kind": 5,
+        "importPath": "build.lib.exceltosqlserver.exceltosqlserver",
+        "description": "build.lib.exceltosqlserver.exceltosqlserver",
+        "peekOfCode": "local_ip = socket.gethostbyname(hostname)\n# Pandas to sql need to use sqlalcemy to create engine\nclass exceltoDBtable:\n    #  Available for sql server and mysql now\n    def __init__(self,filePath,hostORip=False,usrID =False,pwd=False,database=False,save2tableName=False):\n        if not any([hostORip,database,usrID,pwd]):\n            raise Exception(\"Partially inputs, please check your inputs...\")\n        else:\n            self.filePath = filePath\n            self.hostORip = hostORip",
+        "detail": "build.lib.exceltosqlserver.exceltosqlserver",
+        "documentation": {}
+    },
+    {
+        "label": "writeMGS",
+        "kind": 2,
+        "importPath": "exceltosqlserver.tesanother.writeMSG",
+        "description": "exceltosqlserver.tesanother.writeMSG",
+        "peekOfCode": "def writeMGS(msg):\n    print(msg)\n# writeMGS(\"g\")",
+        "detail": "exceltosqlserver.tesanother.writeMSG",
+        "documentation": {}
+    },
+    {
+        "label": "writeTest",
+        "kind": 2,
+        "importPath": "exceltosqlserver.test_data.writeINtes",
+        "description": "exceltosqlserver.test_data.writeINtes",
+        "peekOfCode": "def writeTest(msg):\n    print(msg)\ndef writeTest1(msg):\n    print(msg)",
+        "detail": "exceltosqlserver.test_data.writeINtes",
+        "documentation": {}
+    },
+    {
+        "label": "writeTest1",
+        "kind": 2,
+        "importPath": "exceltosqlserver.test_data.writeINtes",
+        "description": "exceltosqlserver.test_data.writeINtes",
+        "peekOfCode": "def writeTest1(msg):\n    print(msg)",
+        "detail": "exceltosqlserver.test_data.writeINtes",
+        "documentation": {}
+    },
+    {
+        "label": "exceltoDBtable",
+        "kind": 6,
+        "importPath": "exceltosqlserver.exceltosqlserver",
+        "description": "exceltosqlserver.exceltosqlserver",
+        "peekOfCode": "class exceltoDBtable:\n    #  Available for sql server and mysql now\n    def __init__(self,filePath,hostORip=False,usrID =False,pwd=False,database=False,save2tableName=False):\n        if not any([hostORip,database,usrID,pwd]):\n            raise Exception(\"Partially inputs, please check your inputs...\")\n        else:\n            self.filePath = filePath\n            self.hostORip = hostORip\n            self.database=database\n            self.usrID = usrID",
+        "detail": "exceltosqlserver.exceltosqlserver",
+        "documentation": {}
+    },
+    {
+        "label": "hostname",
+        "kind": 5,
+        "importPath": "exceltosqlserver.exceltosqlserver",
+        "description": "exceltosqlserver.exceltosqlserver",
+        "peekOfCode": "hostname = socket.gethostname()\nlocal_ip = socket.gethostbyname(hostname)\n# Pandas to sql need to use sqlalcemy to create engine\nclass exceltoDBtable:\n    #  Available for sql server and mysql now\n    def __init__(self,filePath,hostORip=False,usrID =False,pwd=False,database=False,save2tableName=False):\n        if not any([hostORip,database,usrID,pwd]):\n            raise Exception(\"Partially inputs, please check your inputs...\")\n        else:\n            self.filePath = filePath",
+        "detail": "exceltosqlserver.exceltosqlserver",
+        "documentation": {}
+    },
+    {
+        "label": "local_ip",
+        "kind": 5,
+        "importPath": "exceltosqlserver.exceltosqlserver",
+        "description": "exceltosqlserver.exceltosqlserver",
+        "peekOfCode": "local_ip = socket.gethostbyname(hostname)\n# Pandas to sql need to use sqlalcemy to create engine\nclass exceltoDBtable:\n    #  Available for sql server and mysql now\n    def __init__(self,filePath,hostORip=False,usrID =False,pwd=False,database=False,save2tableName=False):\n        if not any([hostORip,database,usrID,pwd]):\n            raise Exception(\"Partially inputs, please check your inputs...\")\n        else:\n            self.filePath = filePath\n            self.hostORip = hostORip",
+        "detail": "exceltosqlserver.exceltosqlserver",
+        "documentation": {}
+    }
+]
