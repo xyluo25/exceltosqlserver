@@ -1,0 +1,5 @@
+*.pypirc
+*.vscode/*
+*build/*
+*/dist/*
+*.egg-info/*
