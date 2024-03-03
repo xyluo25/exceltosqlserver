@@ -10,3 +10,4 @@ exceltosqlserver.egg-info/dependency_links.txt
 exceltosqlserver.egg-info/top_level.txt
 exceltosqlserver/test_data/__init__.py
 exceltosqlserver/test_data/test01.xls
+tests/test_exceltosqlserver.py

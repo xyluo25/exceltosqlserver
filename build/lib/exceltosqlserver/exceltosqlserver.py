@@ -15,29 +15,41 @@ hostname = socket.gethostname()
 local_ip = socket.gethostbyname(hostname)
 
 
-class exceltoDBtable:
-    #  Available for sql server and mysql now
+class ExcelToDB:
     def __init__(self,
                  filePath: str,
-                 hostORip: str = "",
+                 host_ip: str = "",
                  usrID: str = "",
                  pwd: str = "",
-                 database: str = "",
+                 db_name: str = "",
                  rename_table: str = ""):
+        """This class is used to save excel or csv file into sql server database.
 
-        if not any([hostORip, database, usrID, pwd]):
+        Args:
+            filePath (str): your file path.
+            host_ip (str, optional): your local machine host or ip address. Defaults to "".
+            usrID (str, optional): sql server user id . Defaults to "".
+            pwd (str, optional): sql server password. Defaults to "".
+            db_name (str, optional): database name in sql server. Defaults to "".
+            rename_table (str, optional): rename your input table.
+                if "", will use exact the same table name of your input file. Defaults to "".
+
+        Raises:
+            Exception: Partially inputs, please check your inputs...
+
+        """
+
+        if not any([host_ip, db_name, usrID, pwd]):
             raise Exception("Partially inputs, please check your inputs...")
 
         self.filePath = filePath
-        self.hostORip = hostORip
-        self.database = database
+        self.host_ip = host_ip
+        self.db_name = db_name
         self.usrID = usrID
         self.pwd = pwd
         self.rename_table = rename_table
 
         self.dbType = ["sqlserver"]
-        self.readData()
-        self.connect2DB()
 
     def connect2DB(self) -> None:  # sourcery skip: assign-if-exp, extract-method
         # This will test whether a sql server database or a mysql database
@@ -57,21 +69,10 @@ class exceltoDBtable:
             try:
                 # connect to sql server
                 self.engine = create_engine(
-                    f"mssql+pyodbc://{self.usrID}:{self.pwd}@{self.hostORip}/{self.database}?driver={driveString}?")
+                    f"mssql+pyodbc://{self.usrID}:{self.pwd}@{self.host_ip}/{self.db_name}?driver={driveString}?")
 
                 print("Successfully connected to SQL Server...")
-
-                if self.rename_table:
-                    table_name = self.rename_table
-                elif "/" in self.filePath:
-                    table_name = self.filePath.split("/")[-1].split(".")[0]
-                else:
-                    table_name = self.filePath.split(".")[0]
-
-                self.file_data.to_sql(table_name, con=self.engine)
-                print("Successfully saved %s into SQL Server..." % table_name)
                 return None
-
             except Exception:
                 self.engine = False
                 continue
@@ -88,3 +89,32 @@ class exceltoDBtable:
             print("Successfully load csv data...")
         else:
             raise Exception("Unable to load input file...")
+
+    def save2db(self) -> None:
+        """Save your data into sql server database.
+        """
+
+        self.readData()
+        self.connect2DB()
+
+        # specify the table name
+        if self.rename_table:
+            tableName = self.rename_table
+        elif "/" in self.filePath:
+            tableName = self.filePath.split("/")[-1].split(".")[0]
+        else:
+            tableName = self.filePath.split(".")[0]
+
+        if self.engine:
+            try:
+                self.file_data.to_sql(tableName, con=self.engine)
+                print("Successfully saved %s into SQL Server..." % tableName)
+
+            except Exception as e:
+                raise Exception(
+                    "Can not save table to sql server, please check your inputs."
+                ) from e
+        else:
+            raise Exception(
+                "Can not save table to sql server, please check your inputs."
+            )
