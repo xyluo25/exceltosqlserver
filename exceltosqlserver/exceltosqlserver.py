@@ -10,11 +10,13 @@ import pandas as pd
 import pyodbc
 from sqlalchemy import create_engine
 import socket
+from pyufunc import func_running_time, requires
 
 hostname = socket.gethostname()
 local_ip = socket.gethostbyname(hostname)
 
 
+@requires("pandas", "pyodbc", "sqlalchemy")
 class ExcelToDB:
     def __init__(self,
                  filePath: str,
@@ -90,6 +92,7 @@ class ExcelToDB:
         else:
             raise Exception("Unable to load input file...")
 
+    @func_running_time
     def save2db(self) -> None:
         """Save your data into sql server database.
         """
