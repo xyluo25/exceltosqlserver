@@ -4,7 +4,7 @@ This package help to convert your excel files (xlsx,xls,csv) to SQL Server datab
 
 # Installation
 
-exceltomysql can be installed as:
+exceltosqlserver can be installed as:
 
 ```python
 pip install exceltosqlserver
@@ -21,8 +21,7 @@ pip install exceltosqlserver
 # QuickStart
 
 ```python
-import exceltosqlserver as es
-# generate the class instance
+from exceltosqlserver import ExcelToDB, hostname, local_ip
 
 # STEP One, prepare your input pareameters
 
@@ -34,11 +33,11 @@ rename_table = ""  # Use your filename as tablename onto SQL Server or user defi
 
 # get your local host name
 # this will return your local computer name for your sql server database
-host_name = es.hostname
+host_name = hostname
 
 # get your local ip address
 # this will return your local ip address (if your sql server can be accessed by DNS)
-ip = es.local_ip
+ip = local_ip
 
 # you need to change your host if needed, dns: local ip address
 #yourHostORip  = "localhost"
@@ -47,8 +46,8 @@ yourHostORip  = ip
 
 
 # STEP Two add your data to sql server
-es.exceltoDBtable(yourFile, yourHostORip, yourUsrID, yourPWD, yourDBname, rename_table)
-
+es = ExcelToDB(yourFile, yourHostORip, yourUsrID, yourPWD, yourDBname, rename_table)
+es.save2db()
 
 ```
 
@@ -61,16 +60,16 @@ Sucessfully saved 'yourtable' to SQL Server...
 
 # API Reference
 
-exceltosqlserver.exceltoDBtable(`filePath,hostORip=False,usrID =False,pwd=False,database=False,rename_table`)
+exceltosqlserver.ExcelToDB(`filePath,host_ip=False,usrID =False,pwd=False,db_name=False,rename_table`)
 
 filePath: str
 
-hostORip: str  default: ""
+host_ip: str  default: ""
 
 usrID: str  default: ""
 
 pwd: str   default: ""
 
-database: str  default: ""
+db_name: str  default: ""
 
 rename_table: str   default: "", will auto save your filename as table name  to sql  server database. If assignmed value, will change table name from your filename to the assigned value.

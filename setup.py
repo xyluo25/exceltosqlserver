@@ -11,8 +11,8 @@ except Exception:
     modules_needed = []
 
 setuptools.setup(
-    name="exceltosqlserver", # Replace with your own username
-    version="0.2.1",
+    name="exceltosqlserver",  # Replace with your own username
+    version="0.2.5",
     author="Xiangyong Luo",
     author_email="rochemay@163.com",
     description="This package help convert your excel files (xlsx,xls,csv) to SQL Server Database.",
@@ -25,7 +25,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
+    python_requires='>=3.10',
 
     install_requires=modules_needed,
     packages=setuptools.find_packages(),

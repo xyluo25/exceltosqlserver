@@ -1,0 +1,16 @@
+pandas>=2.2.1
+psycopg2>=2.9.9
+pytest>=8.0.2
+pyufunc>=0.2.1
+setuptools>=68.2.2
+SQLAlchemy>=2.0.27
+tqdm
+shapely
+numpy
+beautifulsoup4
+requests
+urllib3
+sphinx
+pyodbc
+exceltosqlserver
+

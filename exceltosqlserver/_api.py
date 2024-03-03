@@ -6,6 +6,8 @@
 ##############################################################
 
 
-from .exceltosqlserver import exceltoDBtable
+from .exceltosqlserver import ExcelToDB
 from .exceltosqlserver import hostname
 from .exceltosqlserver import local_ip
+
+__all__ = ['ExcelToDB', 'hostname', 'local_ip']
